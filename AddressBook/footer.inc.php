@@ -1,0 +1,3 @@
+<?
+include("../footer.inc.php");
+?>
