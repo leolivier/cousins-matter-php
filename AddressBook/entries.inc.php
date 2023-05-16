@@ -14,14 +14,14 @@ if (count($entries) == 0) {
 } else {
 ?>
 	<span class="info">nombre de resultats: <?=count($entries)?></span>
-	<div class="container2">
+	<div class="container">
 <?
 	$nbcols=4;
 	$i=0;
 	foreach($entries as $entry) {
 		if ($i%$nbcols==0) echo '<div class="grid">';
 ?>
-		<div class='name ingrid<?=$i+1?>'><a href="index.php?id=<?=$entry['id']?>"><?=$entry['lastname']?>, <?=$entry['firstname']?></a></div>
+		<div class='name'><a href="index.php?id=<?=$entry['id']?>"><?=strtoupper($entry['lastname'])?>, <?=$entry['firstname']?></a></div>
 <?
 		if ($i%$nbcols==$nbcols-1) echo '</div>';
 		$i++;

@@ -1,3 +1,6 @@
+/* colors */
+/* fonts */
+/* boxes */
 body {
   position: relative;
   margin: 0;
@@ -11,16 +14,17 @@ body {
 }
 
 /* main div params */
+div.banner-container {
+  text-align: center;
+}
+
 div.banner {
   background-color: #359;
   border-radius: 15px;
   color: #fff;
   font-size: 36px;
-  padding: 10px;
-  text-align: center;
-  display: inline;
-  position: absolute;
-  left: 50%;
+  padding: 5px 15px;
+  display: inline-block;
 }
 
 /* content params */
@@ -42,7 +46,7 @@ div.content h1 {
   margin: -9px -9px 0.5em;
   padding: 15px 0 5px;
   text-align: right;
-  background: #ACE;
+  background-color: #ace;
   color: #024;
   text-transform: uppercase;
   font: bold 25px sans-serif;
@@ -78,23 +82,20 @@ div.content input, div.content textarea {
 }
 
 .sidebar .menu, .addressbook_navbar .menu, .addressbook_searchbar .menu, .modal_bar .menu {
+  padding: 3px;
+  margin: 0 2px 2px;
   display: block;
 }
 .sidebar .menu a, .sidebar .menu input[type=submit], .addressbook_navbar .menu a, .addressbook_navbar .menu input[type=submit], .addressbook_searchbar .menu a, .addressbook_searchbar .menu input[type=submit], .modal_bar .menu a, .modal_bar .menu input[type=submit] {
   border-radius: 10px;
-  display: inline-block;
   width: 170px;
   padding: 3px 0px;
 }
 .sidebar .letter a, .addressbook_navbar .letter a, .addressbook_searchbar .letter a, .modal_bar .letter a {
   width: 20px;
-  display: inline-block;
-}
-.sidebar .menu, .sidebar .letter, .addressbook_navbar .menu, .addressbook_navbar .letter, .addressbook_searchbar .menu, .addressbook_searchbar .letter, .modal_bar .menu, .modal_bar .letter {
-  padding: 3px;
-  margin: 0 2px 2px;
 }
 .sidebar .menu a, .sidebar .menu a:link, .sidebar .menu a:visited, .sidebar .menu input[type=submit], .sidebar .letter a, .sidebar .letter a:link, .sidebar .letter a:visited, .sidebar .letter input[type=submit], .addressbook_navbar .menu a, .addressbook_navbar .menu a:link, .addressbook_navbar .menu a:visited, .addressbook_navbar .menu input[type=submit], .addressbook_navbar .letter a, .addressbook_navbar .letter a:link, .addressbook_navbar .letter a:visited, .addressbook_navbar .letter input[type=submit], .addressbook_searchbar .menu a, .addressbook_searchbar .menu a:link, .addressbook_searchbar .menu a:visited, .addressbook_searchbar .menu input[type=submit], .addressbook_searchbar .letter a, .addressbook_searchbar .letter a:link, .addressbook_searchbar .letter a:visited, .addressbook_searchbar .letter input[type=submit], .modal_bar .menu a, .modal_bar .menu a:link, .modal_bar .menu a:visited, .modal_bar .menu input[type=submit], .modal_bar .letter a, .modal_bar .letter a:link, .modal_bar .letter a:visited, .modal_bar .letter input[type=submit] {
+  display: inline-block;
   text-align: center;
   font-weight: bold;
   font-size: 14px;
@@ -111,12 +112,6 @@ div.content input, div.content textarea {
   background-color: #359;
 }
 
-.search-query {
-  position: relative;
-  vertical-align: top;
-  background-color: transparent;
-}
-
 .addressbook_navbar, .addressbook_searchbar, .searchbar, .modal_bar {
   display: block;
 }
@@ -127,9 +122,17 @@ div.content input, div.content textarea {
 .search, .startswith {
   display: inline-block;
 }
+.search .search-query, .startswith .search-query {
+  position: relative;
+  vertical-align: top;
+  background-color: #fff;
+}
 
 .search {
   float: inline-end;
+}
+.search .menu {
+  padding: 0px;
 }
 
 code, pre {
@@ -138,63 +141,12 @@ code, pre {
   font-weight: bold;
 }
 
-a.bouton:link:hover, a.bouton:visited:hover {
-  /*background-color:#CCFFFF;*/
-  border-style: inset;
-}
-
-.bouton, a.bouton:link, a.bouton:visited {
-  font-family: Geneva, Arial, Helvetica, sans-serif;
-  font-size: 14px;
+.info {
   font-weight: bold;
-  background-image: url("images/fond.jpg");
-  text-decoration: none;
-  /* background-color: #f0f5f0; #ACE;*/
-  margin: 3px;
-  padding: 3px;
-  border: medium outset; /* #990099; */
+  margin-bottom: 40px;
 }
 
-#menu ul li {
-  font: italic normal 110% "Times New Roman", Times, serif;
-  letter-spacing: 0.1em;
-  margin-top: 10px;
-  padding-bottom: 2px; /*border-bottom: dotted 1px #ccc;*/
-}
-
-#menu ul ul {
-  font-variant: normal;
-  font-weight: normal;
-  line-height: 100%;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  text-align: left;
-}
-
-#menu ul ul li {
-  border: 0;
-  font: normal normal 90%/115% "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
-  letter-spacing: 0;
-  margin-top: 0;
-  padding: 0;
-  padding-left: 12px;
-}
-
-#menu ul ul li a {
-  color: #000000;
-  text-decoration: none;
-}
-
-#menu ul ul li a:hover {
-  border-bottom: 1px solid #908080;
-}
-
-#menu ul ul ul.children {
-  font-size: 142%;
-  padding-left: 4px;
-}
-
+/* chat */
 .chat_time {
   font-style: italic;
   font-size: 9px;
@@ -204,62 +156,45 @@ a.bouton:link:hover, a.bouton:visited:hover {
   height: 300px;
   width: 650px;
   overflow: auto;
-  background-color: #f0f0f5;
-  border: 1px solid #908080;
+  background-color: #fff;
+  border: 1px solid #359;
 }
 
 #txt_message {
   width: 573px;
 }
 
-.container {
-  /*width: 600px;*/
-  margin: 0 auto;
-}
-
-.row {
-  line-height: 24pt;
-  border: solid 1px black;
-}
-
-.grid, .grid5 {
-  display: grid;
-  grid-gap: 10px;
-  grid-auto-rows: minmax(20px, auto);
-}
-
+/* grids */
 .grid {
+  display: grid;
+  grid-gap: 1px;
+  grid-auto-rows: minmax(20px, auto);
   grid-template-columns: repeat(4, 1fr);
 }
 
-.grid5 {
-  grid-template-columns: repeat(5, 1fr);
-}
-
-div.alternate-colors > div:nth-of-type(odd) {
+/* alternate row colors */
+.alternate-colors > div:nth-of-type(odd) {
   background: #e9e9ef;
 }
-
-div.alternate-colors > div:nth-of-type(even) {
+.alternate-colors > div:nth-of-type(even) {
   background: #f9f9ff;
 }
 
-div.container2 > div:nth-of-type(odd) > div:nth-of-type(odd) {
+/* alternate cell colors in 2D matrix */
+.container > div:nth-of-type(odd) > div:nth-of-type(odd) {
+  background: #e9e9ef;
+}
+.container > div:nth-of-type(odd) > div:nth-of-type(even) {
+  background: #f9f9ff;
+}
+.container > div:nth-of-type(even) > div:nth-of-type(odd) {
+  background: #f9f9ff;
+}
+.container > div:nth-of-type(even) > div:nth-of-type(even) {
   background: #e9e9ef;
 }
 
-div.container2 > div:nth-of-type(odd) > div:nth-of-type(even) {
-  background: #f9f9ff;
-}
-
-div.container2 > div:nth-of-type(even) > div:nth-of-type(odd) {
-  background: #f9f9ff;
-}
-
-div.container2 > div:nth-of-type(even) > div:nth-of-type(even) {
-  background: #e9e9ef;
-}
-
+/* birthdays colors */
 .today {
   background-color: #ff0000;
 }
@@ -275,56 +210,38 @@ div.container2 > div:nth-of-type(even) > div:nth-of-type(even) {
 .name {
   text-align: center;
   font-weight: bold;
+  display: block;
+}
+.name a {
+  text-decoration: none;
+  display: inline-block;
   padding: 5px 10px;
+  width: 100%;
+}
+.name a:visited {
+  color: #359 !important;
+}
+.name a:hover {
+  color: #fff !important;
+  background-color: #359;
 }
 
-.ingrid1 {
-  grid-column: 1/1;
-  grid-row: 1;
-}
-
-.ingrid2 {
-  grid-column: 2/2;
-  grid-row: 1;
-}
-
-.ingrid3 {
-  grid-column: 3/3;
-  grid-row: 1;
-  padding-left: 5px;
-}
-
-.ingrid4 {
-  grid-column: 4/4;
-  grid-row: 1;
-  padding-left: 5px;
-}
-
-.entry_container {
+/* used for displaying or editing one field of an entry */
+.entry_field {
   padding: 0px 6px 5px 6px;
 }
-
-.entry_container label {
+.entry_field label {
   width: 150px;
   display: inline-block;
   font-weight: bold;
   padding-right: 5px;
   vertical-align: top;
 }
-
-.entry_container div {
+.entry_field div {
   display: inline-flex;
 }
 
-.info {
-  font-weight: bold;
-  margin-bottom: 40px;
-}
-
-.modal {
-  display: block;
-}
-
+/* modal boxes */
 #modal_view {
   display: block;
 }

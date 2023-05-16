@@ -10,42 +10,42 @@ if (isset($id)) {
 <div class="book_entry">
 	<div class="name"><?=$links['firstname']?> <?=$links['lastname']?></div>
 	<hr/>
-	<div class="entry_container">
+	<div class="entry_field">
 		<label for="birthday">Anniversaire:</label>
 		<div class="birthday"><?=$birthdayf?></div>
 	</div>
-	<div class="entry_container">
+	<div class="entry_field">
 		<label for="adress">Adresse:</label>
 		<div class="address" name="address"><?=$links['address']?></div>
 	</div>
 	<div class="phones_container">
 		<label for="phone">Téléphone:</label>
-		<div class="entry_container">
+		<div class="entry_field">
 			<label for="home_phone">Domicile: </label>
 			<div class="phone"><?=$links['telephone']['home']?></div>
 		</div>
-		<div class="entry_container">
+		<div class="entry_field">
 			<label for="mobile_phone">Portable: </label>
 			<div class="phone"><?=$links['telephone']['mobile']?></div>
 		</div>
-		<div class="entry_container">
+		<div class="entry_field">
 			<label for="work_phone">Travail: </label>
 			<div class="phone"><?=$links['telephone']['work']?></div>
 		</div>
 	</div>
 	<div class="mails_container">
 		<label for="email">Courriels:</label>
-		<div class="entry_container">
+		<div class="entry_field">
 			<label for="email">1er Courriel:</label>
 			<div class="email"><a href="mailto:<?=$links['email'][0]?>"><?=$links['email'][0]?></a></div>
 		</div>
-		<div class="entry_container">
+		<div class="entry_field">
 			<label for="email">2nd Courriel:</label>
 			<div class="email"><a href="mailto:<?=$links['email'][1]?>"><?=$links['email'][1]?></a></div>
 		</div>
 	</div>
 	<label for="others">Autres:</label>
-	<div class="entry_container">
+	<div class="entry_field">
 		<label for="website">Site web:</label>
 		<div class="website"><a href="<?=$links['website']?>"><?=$links['website']?></a></div>
 	</div>
