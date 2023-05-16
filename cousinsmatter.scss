@@ -1,7 +1,18 @@
+/* colors */
 $bgcolor: #fff;
 $fgcolor: #359;
+$h1_bgcolor: #ace;
+$h1_fgcolor: #024;
+$a_visited_color: #355;
+$a_hover_color: #088;
+$alternate_light: #f9f9ff;
+$alternate_dark: #e9e9ef;
+
+/* fonts */
 $fontsize: 16px;
 $font: Verdana, sans-serif;
+
+/* boxes */
 $content_top: 66px;
 $sidebar_width: 180px;
 
@@ -16,11 +27,13 @@ body {
 	color: $fgcolor;
 }
 /* main div params */
+div.banner-container {
+	text-align:center;
+}
 div.banner {
 	background-color: $fgcolor; border-radius: 15px; 
-	color: $bgcolor; font-size: 36px; 
-	padding: 10px; text-align:center;
-	display: inline; position: absolute; left:50%;
+	color: $bgcolor; font-size: 36px; padding: 5px 15px;
+	display: inline-block;
 }
 
 /* content params */
@@ -36,8 +49,8 @@ div.content {
 		margin: -9px -9px 0.5em; 
 		padding: 15px 0 5px; 
 		text-align: right; 
-		background: #ACE; 
-		color: #024; 
+		background-color: $h1_bgcolor; 
+		color: $h1_fgcolor; 
 		text-transform: uppercase; 
 		font: bold 25px sans-serif; 
 		height: 28px; 
@@ -46,9 +59,9 @@ div.content {
 	}
 
 	a:link {color: $fgcolor;}
-	a:visited {color: #355;}
-	a:link:hover {color: #088;}
-	a:visited:hover {color: #088;} 
+	a:visited {color: $a_visited_color;}
+	a:link:hover {color: $a_hover_color;}
+	a:visited:hover {color: $a_hover_color;} 
 
 	input, textarea {
 		font: $fontsize $font; 
@@ -119,7 +132,6 @@ code, pre {color: #35F; font: 110% monospace; font-weight:bold;}
 
 
 a.bouton:link:hover, a.bouton:visited:hover {	
-	/*background-color:#CCFFFF;*/
 	border-style: inset;
 }
 
@@ -130,17 +142,16 @@ a.bouton:link:hover, a.bouton:visited:hover {
 	
 	background-image:url("images/fond.jpg") ;
 	text-decoration:none;
-	/* background-color: #f0f5f0; #ACE;*/
 	margin: 3px;
 	padding: 3px;
-	border: medium outset; /* #990099; */
+	border: medium outset; 
 }
 
 #menu ul li {
 	font: italic normal 110% 'Times New Roman', Times, serif;
 	letter-spacing: 0.1em;
 	margin-top: 10px;
-	padding-bottom: 2px; /*border-bottom: dotted 1px #ccc;*/
+	padding-bottom: 2px;
 }
 
 #menu ul ul {
@@ -163,7 +174,7 @@ a.bouton:link:hover, a.bouton:visited:hover {
 }
 
 #menu ul ul li a {
-	color: #000000;
+	color: $bgcolor;
 	text-decoration: none;
 }
 
@@ -184,8 +195,8 @@ a.bouton:link:hover, a.bouton:visited:hover {
 #div_chat {
 	height: 300px; width: 650px; 
 	overflow: auto; 
-	background-color: #f0f0f5; 
-	border: 1px solid #908080;
+	background-color: $bgcolor; 
+	border: 1px solid $fgcolor;
 }
 
 #txt_message {	width: 573px; }
@@ -215,11 +226,11 @@ a.bouton:link:hover, a.bouton:visited:hover {
 }
 
 div.alternate-colors>div:nth-of-type(odd) {
-	background: #e9e9ef;
+	background: $alternate_dark;
 }
 
 div.alternate-colors>div:nth-of-type(even) {
-	background: #f9f9ff;
+	background: $alternate_light;
 }
 
 div.container2 > div:nth-of-type(odd) > div:nth-of-type(odd) {

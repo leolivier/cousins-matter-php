@@ -27,5 +27,5 @@
 //      echo("<pre>P $param=$value</pre>");
     }
   ?>
-  <div class="banner"><?=$title?></div>
+  <div class="banner-container"> <div class="banner"><?=$title?></div></div>
   <div class="content">
