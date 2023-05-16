@@ -51,7 +51,7 @@ if (isset($id)) {
 	</div>
 </div>
 <hr/>
-<div class="grid">
+<div class="modal_bar">
     <div class="menu"><a id="modal-edit-close" onclick="togglePopupEdit(true);">Modifier cette fiche</a></div>
     <div class="menu"><a href="index.php?delete=true&id=<?=$id?>"
                          onClick="return confirm('Etes vous sur(e) de vouloir supprimer cette fiche?')">Supprimer cette fiche</a></div>

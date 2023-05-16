@@ -76,9 +76,8 @@ else $entry = $address_book->get_empty_entry();
         <input type="url" name="website" size="35" value="<?=$entry["website"]?>">
 	</div>
 	<hr/>
-    <div class="grid">
+    <div class="modal_bar">
         <div class="menu"><input type="Submit" name="submit" value="Enregistrer"/></div>
         <div class="menu"><a id="modal-close" onclick=<?=isset($new)?'closeAllPopups()':'togglePopupEdit(false)'?>>Abandonner</a></div>
     </div>
 </form>
-

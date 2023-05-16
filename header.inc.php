@@ -8,6 +8,10 @@
 
   <body>
 <?
+  function die_alert($msg) { die("<script>alert('$msg');</script>"); }
+  function hprint_r($obj) { echo("<pre>");print_r($obj);echo("</pre>"); }
+  function alert($msg) { echo("<script>alert('$msg');</script>"); }
+
   global $configs;
   $configs = include ($mainpath."config.php");
   include ($mainpath."menu.inc.php"); 
