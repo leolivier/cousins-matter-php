@@ -1,4 +1,6 @@
 <?
+require_once ('AddressBookDAO.class.php');
+
 class AddressBookDB {
     // private properties
     private $table    = 'addressbook';
@@ -9,32 +11,6 @@ class AddressBookDB {
 		global $configs;
 		$dbc=$configs->db;
     	$this->db = new mysqli($dbc->server, $dbc->user, $dbc->password, $dbc->name) or die($dbc);
-    }
-
-    // transform an sql date to a DateTime
-    private static function toDateTime($sqldate):DateTime {
-        return DateTime::createFromFormat("Y-m-d H:i:s", $sqldate);
-    }
-
-    // transform a DateTime to an sql date
-    private static function toSQLDate($datetime) { return $datetime->format("Y-m-d");; }
-
-    // transforms an internal table row into an entry
-    private static function row_to_entry ($row){
-        return array(
-            'id' => $row['id'], 'firstname' => $row['firstname'], 'lastname' => $row['lastname'], 'address' => $row['address'],
-            'telephone' => array('home' => $row['home'], 'mobile' => $row['mobile'], 'work' => $row['work']),
-            'email' => array($row['email'], $row['email2']), 'birthday' => AddressBookDB::toDateTime($row['birthday']),
-            'website' => $row['website']);
-    }
-
-    // transforms an entry into a internal table row
-    private static function entry_to_row($entry){
-        return array(
-            'firstname' => $entry['firstname'], 'lastname' => $entry['lastname'], 'address' => $entry['address'],
-            'home' => $entry['telephone']['home'], 'mobile' => $entry['telephone']['mobile'], 'work' => $entry['telephone']['work'],
-            'email' => $entry['email'][0], 'email2' => $entry['email'][1], 'website' => $entry['website'],
-            'birthday' => is_string($entry["birthday"]) ? $entry["birthday"] : AddressBookDB::toSQLDate($entry["birthday"]));
     }
 
     // returns birthdays in the next ndays in the format of a mysqli_result
@@ -58,7 +34,7 @@ class AddressBookDB {
             $tab[$i]['lastname'] = $row['lastname'];
             $tab[$i]['age'] = $row['age'];
             $tab[$i]['#days'] = $row['diff'];
-            $tab[$i]['birthday'] = AddressBookDB::toDateTime($row['birthday']);
+            $tab[$i]['birthday'] = DateTime::createFromFormat("Y-m-d H:i:s", $row['birthday']);
             $tab[$i]['id'] = $row['id'];
             $i++;
         }
@@ -71,7 +47,7 @@ class AddressBookDB {
         $stmt->bind_param("i", $id);
         $stmt->execute() or die($this->db->error);
         $result = $stmt->get_result();
-        if ($result->num_rows>0) return AddressBookDB::row_to_entry($result->fetch_array());
+        if ($result->num_rows>0) return AddressBookDAO::fromRow($result->fetch_array());
         die("cet identifiant n'existe pas: $id");
     }
 
@@ -87,7 +63,8 @@ class AddressBookDB {
     //transform sql result to list of entries
     private static function rows_to_entries($result) {
    		$entries = array();
-        while($row = $result->fetch_array()){ array_push($entries, AddressBookDB::row_to_entry($row));}
+        while($row = $result->fetch_array()) { array_push($entries, AddressBookDAO::fromRow($row)); }
+        // hprint_r($entries);
         return $entries;
 	}
 
@@ -99,7 +76,7 @@ class AddressBookDB {
 
     // create an entry, returns its id
     function create_entry($entry){
-        $row = AddressBookDB::entry_to_row($entry);
+        $row = $entry->toRow();
         $stmt = $this->db->prepare("INSERT INTO $this->table (firstname, lastname, address, home, mobile, work, email, email2, birthday, website) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("ssssssssss",
             $row['firstname'], $row['lastname'], $row['address'],
@@ -111,7 +88,7 @@ class AddressBookDB {
 
     // update an entry
     function update_entry($id, $entry){
-        $row = AddressBookDB::entry_to_row($entry);
+        $row = $entry->toRow();
         $stmt = $this->db->prepare("UPDATE $this->table SET firstname=?,lastname=?,address=?,home=?,mobile=?,work=?,email=?,email2=?,birthday=?,website=? WHERE id=?");
         $stmt->bind_param("ssssssssssi",
             $row['firstname'], $row['lastname'], $row['address'],

@@ -7,7 +7,7 @@
 	<div class="menu"><a href="<?=$mainpath?>tresors/index.php">Les Petits Tr&eacute;sors</a></div> 
 	<div class="menu"><a href="<?=$mainpath?>annonces/index.php">Les Petites Annonces</a></div> 
 	<div class="menu"><a href="<?=$mainpath?>musique/index.php">Le Coin des Artistes</a></div> 
-	<div class="menu"><a href="<?=$mainpath?>ajax-chat/index.php">Le Petit Chat</a></div> 
+	<div class="menu"><a href="<?=$mainpath?>AjaxChat/index.php">Le Petit Chat</a></div> 
 	<div class="menu"><a href="<?=$mainpath?>faq.php">Foire Aux Questions</a></div> 
   <p/> 
   <p align="center"><font size="1">Nombre de visiteurs:</font><br/> 

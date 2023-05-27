@@ -81,20 +81,20 @@ div.content input, div.content textarea {
   padding-top: 10px;
 }
 
-.sidebar .menu, .addressbook_navbar .menu, .addressbook_searchbar .menu, .modal_bar .menu {
+.sidebar .menu, .addressbook_navbar .menu, .addressbook_searchbar .menu, .modal_bar .menu, .chat .menu {
   padding: 3px;
   margin: 0 2px 2px;
   display: block;
 }
-.sidebar .menu a, .sidebar .menu input[type=submit], .addressbook_navbar .menu a, .addressbook_navbar .menu input[type=submit], .addressbook_searchbar .menu a, .addressbook_searchbar .menu input[type=submit], .modal_bar .menu a, .modal_bar .menu input[type=submit] {
+.sidebar .menu a, .sidebar .menu input[type=submit], .addressbook_navbar .menu a, .addressbook_navbar .menu input[type=submit], .addressbook_searchbar .menu a, .addressbook_searchbar .menu input[type=submit], .modal_bar .menu a, .modal_bar .menu input[type=submit], .chat .menu a, .chat .menu input[type=submit] {
   border-radius: 10px;
   width: 170px;
   padding: 3px 0px;
 }
-.sidebar .letter a, .addressbook_navbar .letter a, .addressbook_searchbar .letter a, .modal_bar .letter a {
+.sidebar .letter a, .addressbook_navbar .letter a, .addressbook_searchbar .letter a, .modal_bar .letter a, .chat .letter a {
   width: 20px;
 }
-.sidebar .menu a, .sidebar .menu a:link, .sidebar .menu a:visited, .sidebar .menu input[type=submit], .sidebar .letter a, .sidebar .letter a:link, .sidebar .letter a:visited, .sidebar .letter input[type=submit], .addressbook_navbar .menu a, .addressbook_navbar .menu a:link, .addressbook_navbar .menu a:visited, .addressbook_navbar .menu input[type=submit], .addressbook_navbar .letter a, .addressbook_navbar .letter a:link, .addressbook_navbar .letter a:visited, .addressbook_navbar .letter input[type=submit], .addressbook_searchbar .menu a, .addressbook_searchbar .menu a:link, .addressbook_searchbar .menu a:visited, .addressbook_searchbar .menu input[type=submit], .addressbook_searchbar .letter a, .addressbook_searchbar .letter a:link, .addressbook_searchbar .letter a:visited, .addressbook_searchbar .letter input[type=submit], .modal_bar .menu a, .modal_bar .menu a:link, .modal_bar .menu a:visited, .modal_bar .menu input[type=submit], .modal_bar .letter a, .modal_bar .letter a:link, .modal_bar .letter a:visited, .modal_bar .letter input[type=submit] {
+.sidebar .menu a, .sidebar .menu a:link, .sidebar .menu a:visited, .sidebar .menu input[type=submit], .sidebar .letter a, .sidebar .letter a:link, .sidebar .letter a:visited, .sidebar .letter input[type=submit], .addressbook_navbar .menu a, .addressbook_navbar .menu a:link, .addressbook_navbar .menu a:visited, .addressbook_navbar .menu input[type=submit], .addressbook_navbar .letter a, .addressbook_navbar .letter a:link, .addressbook_navbar .letter a:visited, .addressbook_navbar .letter input[type=submit], .addressbook_searchbar .menu a, .addressbook_searchbar .menu a:link, .addressbook_searchbar .menu a:visited, .addressbook_searchbar .menu input[type=submit], .addressbook_searchbar .letter a, .addressbook_searchbar .letter a:link, .addressbook_searchbar .letter a:visited, .addressbook_searchbar .letter input[type=submit], .modal_bar .menu a, .modal_bar .menu a:link, .modal_bar .menu a:visited, .modal_bar .menu input[type=submit], .modal_bar .letter a, .modal_bar .letter a:link, .modal_bar .letter a:visited, .modal_bar .letter input[type=submit], .chat .menu a, .chat .menu a:link, .chat .menu a:visited, .chat .menu input[type=submit], .chat .letter a, .chat .letter a:link, .chat .letter a:visited, .chat .letter input[type=submit] {
   display: inline-block;
   text-align: center;
   font-weight: bold;
@@ -107,15 +107,15 @@ div.content input, div.content textarea {
   border-color: #359;
   border-style: ridge;
 }
-.sidebar .menu a:hover, .sidebar .menu input[type=submit]:hover, .sidebar .letter a:hover, .sidebar .letter input[type=submit]:hover, .addressbook_navbar .menu a:hover, .addressbook_navbar .menu input[type=submit]:hover, .addressbook_navbar .letter a:hover, .addressbook_navbar .letter input[type=submit]:hover, .addressbook_searchbar .menu a:hover, .addressbook_searchbar .menu input[type=submit]:hover, .addressbook_searchbar .letter a:hover, .addressbook_searchbar .letter input[type=submit]:hover, .modal_bar .menu a:hover, .modal_bar .menu input[type=submit]:hover, .modal_bar .letter a:hover, .modal_bar .letter input[type=submit]:hover {
+.sidebar .menu a:hover, .sidebar .menu input[type=submit]:hover, .sidebar .letter a:hover, .sidebar .letter input[type=submit]:hover, .addressbook_navbar .menu a:hover, .addressbook_navbar .menu input[type=submit]:hover, .addressbook_navbar .letter a:hover, .addressbook_navbar .letter input[type=submit]:hover, .addressbook_searchbar .menu a:hover, .addressbook_searchbar .menu input[type=submit]:hover, .addressbook_searchbar .letter a:hover, .addressbook_searchbar .letter input[type=submit]:hover, .modal_bar .menu a:hover, .modal_bar .menu input[type=submit]:hover, .modal_bar .letter a:hover, .modal_bar .letter input[type=submit]:hover, .chat .menu a:hover, .chat .menu input[type=submit]:hover, .chat .letter a:hover, .chat .letter input[type=submit]:hover {
   color: #fff !important;
   background-color: #359;
 }
 
-.addressbook_navbar, .addressbook_searchbar, .searchbar, .modal_bar {
+.addressbook_navbar, .addressbook_searchbar, .searchbar, .modal_bar, .chat {
   display: block;
 }
-.addressbook_navbar .menu, .addressbook_searchbar .menu, .searchbar .menu, .modal_bar .menu {
+.addressbook_navbar .menu, .addressbook_searchbar .menu, .searchbar .menu, .modal_bar .menu, .chat .menu {
   display: inline-block;
 }
 
@@ -152,6 +152,10 @@ code, pre {
   font-size: 9px;
 }
 
+.chat, .chat_help {
+  display: inline-block;
+}
+
 #div_chat {
   height: 300px;
   width: 650px;
@@ -165,11 +169,18 @@ code, pre {
 }
 
 /* grids */
-.grid {
+.grid, .grid2, .grid4 {
   display: grid;
   grid-gap: 1px;
   grid-auto-rows: minmax(20px, auto);
+}
+
+.grid, .grid4 {
   grid-template-columns: repeat(4, 1fr);
+}
+
+.grid2 {
+  grid-template-columns: repeat(2, 1fr);
 }
 
 /* alternate row colors */

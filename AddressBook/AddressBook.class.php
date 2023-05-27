@@ -1,5 +1,7 @@
 <?
 require_once ("AddressBookDB.class.php");
+require_once ("AddressBookDAO.class.php");
+
 class AddressBook {
     // the db class
     var $db;
@@ -22,6 +24,7 @@ class AddressBook {
         if ($no_year) return substr($fdate, 0, -4);
         else return $fdate;
     }
+
     // returns birthdays in the next ndays in the format of a table of assoc
     // each row contains id, firstname, lastname, birthday date,
     // age, diff (in days between today and birthday)
@@ -36,30 +39,23 @@ class AddressBook {
         return $this->db->get_entry_by_id($id);
     }
 
-    function get_empty_entry(){
-        return array(
-            'firstname' => '', 'lastname' => '', 'address' => '',
-            'telephone' => array('home' => '', 'mobile' => '', 'work' => ''),
-            'email' => array('', ''), 'birthday' => new DateTime('now'),
-            'website' => '');
-    }
 
     function delete_entry($id){
     	$deleted = $this->db->delete_entry($id);
-    	AddressBook::updateMailingList (NULL, $deleted['email']);
+    	AddressBook::updateMailingList (NULL, $deleted->email);
     }
 
     function get_all_entries(){ return $this->db->get_all_entries(); }
 
     function create_entry($entry){
-    	AddressBook::updateMailingList ($entry['email']);
+    	AddressBook::updateMailingList ($entry->email);
     	return $this->db->create_entry($entry);
     }
 
     function update_entry($id, $entry){
     	$id or die_alert("update an unknown id");
         $current = $this->get_entry_by_id($id);
-    	AddressBook::updateMailingList ($entry['email'], $current['email']);
+    	AddressBook::updateMailingList ($entry->email, $current->email);
     	$this->db->update_entry($id, $entry);
     }
 

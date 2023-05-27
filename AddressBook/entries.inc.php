@@ -21,7 +21,7 @@ if (count($entries) == 0) {
 	foreach($entries as $entry) {
 		if ($i%$nbcols==0) echo '<div class="grid">';
 ?>
-		<div class='name'><a href="index.php?id=<?=$entry['id']?>"><?=strtoupper($entry['lastname'])?>, <?=$entry['firstname']?></a></div>
+		<div class='name'><a href="index.php?id=<?=$entry->id?>"><?=strtoupper($entry->lastname)?>, <?=$entry->firstname?></a></div>
 <?
 		if ($i%$nbcols==$nbcols-1) echo '</div>';
 		$i++;

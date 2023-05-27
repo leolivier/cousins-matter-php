@@ -79,7 +79,7 @@ div.content {
 	font-size: 18px; 
 	padding-top:10px;
 }
-.sidebar, .addressbook_navbar, .addressbook_searchbar, .modal_bar {
+.sidebar, .addressbook_navbar, .addressbook_searchbar, .modal_bar, .chat {
 	.menu { 
 		padding: 3px; margin: 0 2px 2px; 
 		display: block;
@@ -110,7 +110,7 @@ div.content {
 		}
 	}
 }
-.addressbook_navbar, .addressbook_searchbar, .searchbar, .modal_bar {
+.addressbook_navbar, .addressbook_searchbar, .searchbar, .modal_bar, .chat {
 	display: block;
 	.menu {
 		display: inline-block;
@@ -142,7 +142,9 @@ code, pre {color: #35F; font: 110% monospace; font-weight:bold;}
 	font-style: italic;
 	font-size: 9px;
 }
-
+.chat, .chat_help {
+	display: inline-block;
+}
 #div_chat {
 	height: 300px; width: 650px; 
 	overflow: auto; 
@@ -154,11 +156,16 @@ code, pre {color: #35F; font: 110% monospace; font-weight:bold;}
 
 
 /* grids */
-.grid {
+.grid, .grid2, .grid4 {
 	display: grid;
 	grid-gap: 1px;
 	grid-auto-rows: minmax(20px, auto);
+}
+.grid, .grid4 {
 	grid-template-columns: repeat(4, 1fr);
+}
+.grid2 {
+	grid-template-columns: repeat(2, 1fr);
 }
 
 /* alternate row colors */
