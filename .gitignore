@@ -27,11 +27,13 @@ wordpress/
 treasures/
 videos/
 map.js
+composer.json
+composer.lock
 
 # replace by blog
 faq.php
 music.php
 treasures.php
 video.php
-
+wordpress.css
 
