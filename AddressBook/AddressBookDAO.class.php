@@ -1,7 +1,7 @@
 <?
 class AddressBookDAO {
     // properties
-   	public int $id;
+   	public $id;
     public string $firstname;
     public string $lastname;
     public string $address;
@@ -11,7 +11,7 @@ class AddressBookDAO {
  	public string $website;
 
     // constructor
-    function __construct(int $id = 0, string $firstname = '', string $lastname = '', string $address = '',
+    function __construct($id = NULL, string $firstname = '', string $lastname = '', string $address = '',
     	string $home_tel = '', string $mobile_tel = '', string $work_tel = '',
     	string $email = '', string $email2 = '', string $birthday =  NULL, string $website = '') {
         $this->id = $id;
@@ -27,7 +27,7 @@ class AddressBookDAO {
         	}
         };
         $this->email = array($email, $email2);
-        $this->birthday = $birthday ? DateTime::createFromFormat("Y-m-d H:i:s", $birthday) : new DateTime('now');
+        $this->birthday = $birthday ? DateTime::createFromFormat("Y-m-d", substr($birthday, 0, 10)) : new DateTime('now');
         $this->website = $website;
     }
 

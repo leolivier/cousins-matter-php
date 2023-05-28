@@ -2,12 +2,11 @@
 global $entry;
 
 if (isset($submit)){ // create or update
-	$entry = new AddressBookDAO($firstname, $lastname, $address,
+	$entry = new AddressBookDAO(isset($id)? $id : NULL, $firstname, $lastname, $address,
     	$home, $mobile, $work, $email, $email2, $birthday, $website);
 	if(isset($id)){  // update
 		$address_book->update_entry($id, $entry);
 	} else { // create
-alert('creation');
 		$id=$address_book->create_entry($entry);
 	}
 }

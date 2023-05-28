@@ -7,7 +7,7 @@ class AddressBook {
     var $db;
     // constructor
     function __construct() {
-        $this->db = new AddressBookDB();
+        $this->db = AddressBookDB::createDB();
     }
 
     static function format_date($date, $no_year=false){
@@ -30,7 +30,7 @@ class AddressBook {
     // age, diff (in days between today and birthday)
     function get_next_birthdays($ndays){
         $tab = $this->db->get_next_birthdays($ndays);
-        //tri sur $tab[][0] :
+        // sort on $tab[][0] => #days to next birthday
         sort($tab);
         return $tab;
     }

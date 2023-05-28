@@ -11,7 +11,8 @@ return (object) array(
 	'name'     => getenv("MYSQL_DATABASE"),
   	'server'   => getenv("MYSQL_SERVER"),
   	'user'     => getenv("MYSQL_USER"),
-  	'password'     => getenv("MYSQL_PASSWORD"),
+  	'password' => getenv("MYSQL_PASSWORD"),
+  	'filename' => getenv("SQLITE3_DB_FILENAME"),
   ),
   'mailing_list' => (object) array(
 	'onoff' => 'off',
