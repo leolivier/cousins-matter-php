@@ -8,12 +8,13 @@ abstract class AddressBookDB {
 
     public static function createDB(): static {
         global $configs;
-        if (isset($configs->db->filename) && file_exists($configs->db->filename)) {
-            require_once ('AddressBookDB.sqlite3.class.php');
-            return new Sqlite3AddressBookDB();
-        } else {
+        if (isset($configs->db->name) && $configs->db->name != '') {
+        	alert("dbname=". $configs->db->name);
             require_once ('AddressBookDB.mysqli.class.php');
             return new MySqliAddressBookDB();
+        } else {
+            require_once ('AddressBookDB.sqlite3.class.php');
+            return new Sqlite3AddressBookDB();
         }
     }
 
@@ -42,7 +43,7 @@ abstract class AddressBookDB {
 
     // search by lastname first letter
     abstract function search_by_first_letter($letter);
-    
+
 	// returns all emails as a json list
 	abstract function get_emails();
 }

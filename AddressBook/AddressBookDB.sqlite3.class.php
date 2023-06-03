@@ -3,13 +3,13 @@ require_once ('AddressBookDAO.class.php');
 require_once ('AddressBookDB.class.php');
 
 class Sqlite3AddressBookDB extends AddressBookDB {
-   	private static $fields = ['firstname', 'lastname', 'address', 'home', 'mobile', 'work', 'email', 'email2', 'birthday', 'website'];
+   	private const FIELDS = ['firstname', 'lastname', 'address', 'home', 'mobile', 'work', 'email', 'email2', 'birthday', 'website'];
+    private const FILENAME = '/sqlite3/cousinsmatter.db';
 
     // constructor
     function __construct() {
-		global $configs;
-		$dbc=$configs->db;
-    	$this->db = new SQLite3($dbc->filename, SQLITE3_OPEN_READWRITE) or die($dbc);
+    	$this->db = new SQLite3(self::FILENAME, SQLITE3_OPEN_READWRITE) or die($this->db_error());
+        $this->db->busyTimeout(2000); // 2secs timeout
     }
 
 	private function db_error() { return 'DB Error #'.$this->db->lastErrorCode().': '.$this->db->lastErrorMsg(); }
@@ -78,10 +78,10 @@ class Sqlite3AddressBookDB extends AddressBookDB {
         $row = $entry->toRow();
         $q1 = "INSERT INTO ".self::TABLE." (";
         $q2 = ' VALUES (';
-        foreach (Sqlite3AddressBookDB::$fields as &$field) { $q1 .= $field.', '; $q2 .= ':'.$field.', '; }
+        foreach (self::FIELDS as &$field) { $q1 .= $field.', '; $q2 .= ':'.$field.', '; }
         $q1 = substr($q1, 0, -2).')'; $q2 = substr($q2, 0, -2).')';
         $stmt = $this->db->prepare($q1.$q2);
-        foreach (Sqlite3AddressBookDB::$fields as &$field) { $stmt->bindParam(':'.$field, $row[$field]); }
+        foreach (self::FIELDS as &$field) { $stmt->bindParam(':'.$field, $row[$field]); }
 
         $stmt->execute() || die ("erreur d'insertion dans la base:\n".$this->db_error()."\nmerci de contacter l'administrateur");
         return $this->db->lastInsertRowID();
@@ -91,10 +91,10 @@ class Sqlite3AddressBookDB extends AddressBookDB {
     function update_entry($id, $entry){
         $row = $entry->toRow();
         $q = "UPDATE ".self::TABLE." SET ";
-        foreach (Sqlite3AddressBookDB::$fields as &$field) { $q .= $field.'=:'.$field.', '; }
+        foreach (self::FIELDS as &$field) { $q .= $field.'=:'.$field.', '; }
         $q = substr($q, 0, -2).' WHERE id=:id';
         $stmt = $this->db->prepare($q);
-        foreach (Sqlite3AddressBookDB::$fields as &$field) { $stmt->bindParam(':'.$field, $row[$field]); }
+        foreach (self::FIELDS as &$field) { $stmt->bindParam(':'.$field, $row[$field]); }
         $stmt->bindParam(":id", $id, SQLITE3_INTEGER);
         $stmt->execute() || die ("erreur de mise à jour dans la base:\n".$this->db_error()."\nmerci de contacter l'administrateur");
     }

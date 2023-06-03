@@ -2,7 +2,7 @@
 
 return (object) array(
   'admin' => (object) array(
-  	'full_name' => getenv("ADMIN_FUL_NAME"),
+  	'full_name' => getenv("ADMIN_FULL_NAME"),
   	'user' => getenv("ADMIN_USER"),
   	'password' => getenv('ADMIN_PASSWORD'),
   	'email' => getenv('ADMIN_EMAIL'),
