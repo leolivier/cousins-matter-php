@@ -6,9 +6,9 @@ RUN chmod +x /usr/local/bin/install-php-extensions && \
 
 RUN apt update && apt upgrade -y && apt install -y sqlite3
 
-COPY index.html cousinsmatter favicon.ico /var/www/html
-COPY init.sh /usr/local/bin/init-cousinsmatter.sh
-COPY schema.sql /sqlite3/schema.sql
+COPY index.html src favicon.ico /var/www/html
+COPY docker/init.sh /usr/local/bin/init-cousinsmatter.sh
+COPY sql/schema.sql /sqlite3/schema.sql
 
 VOLUME /sqlite3
 

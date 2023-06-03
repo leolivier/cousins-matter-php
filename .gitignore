@@ -4,7 +4,6 @@
 *.jpg
 *.png
 *.gif
-*.ico
 *.mp4
 *.pdf
 *.PDF
@@ -16,24 +15,9 @@ private/
 
 # ignore for the moment
 
-albums/
-classifiedAds/
-AjaxChat/
-genealogie/
-getid3/
-images/
-music/
-wordpress/
-treasures/
-videos/
+archives/
 map.js
 composer.json
 composer.lock
 
-# replace by blog
-faq.php
-music.php
-treasures.php
-video.php
-wordpress.css
 
