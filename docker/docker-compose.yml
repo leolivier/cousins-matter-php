@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+  cousinsmatter:
+    container_name: cousinsmatter
+    image: cousinsmatter:local
+    env_file: .env
+    ports: 
+      - 8080:80
+
+
+     
